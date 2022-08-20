@@ -15,9 +15,13 @@ Header1.defaultProps = {
 };
 
 export default function App() {
-  const [count, setCount] = React.useState<number>(1);
+  const [count, setCount] = React.useState<number>(0);
   const [title, setTitle] = React.useState<string>('header 1');
   const [show, setShow] = React.useState<boolean>(false);
+  const [name, setName] = React.useState<string>();
+  const [names, setNames] = React.useState<string[]>([]);
+  const [email, setEmail] = React.useState<string>();
+  const [showPassword, setShowPassword] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     setShow(count >= 0 && count < 5 && title == 'show');
@@ -27,11 +31,18 @@ export default function App() {
     setTitle(t);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setNames((ns) => {
+      return [...ns, name];
+    });
+    setName('');
+  };
+
   return (
     <div style={{ border: '1px solid red' }}>
       {/* <Header1 title={title} color="white" /> */}
       {show && <Header1 title="This is title" />}
-      <InputComponent onChangeInput={onChangeInput} />
 
       {title === 'Hello React 101' ? (
         ''
@@ -42,6 +53,17 @@ export default function App() {
           <button onClick={() => setCount((c) => c - 1)}> - </button>
         </div>
       )}
+
+      <form onSubmit={handleSubmit}>
+        <input type="email" name="email" />
+        <input name="password" type="password" />
+        <input
+          type="checkbox"
+          onClick={() => showPassword(show)=>!show)}
+        />
+        show
+        <button>Login</button>
+      </form>
     </div>
   );
 }
