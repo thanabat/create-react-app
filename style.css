@@ -10,7 +10,17 @@ p {
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-style: italic;
   color: whitesmoke;
-  text-decoration: line-through;
+  /* text-decoration: line-through; */
   text-decoration-color: red;
   text-align: center;
+}
+button {
+  border-radius: 8px;
+  border-color: white;
+  width: 100px;
+  height: 32px;
+  background-color: blue;
+  color: aliceblue;
+
+  font-size: 24px;
 }
