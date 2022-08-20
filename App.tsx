@@ -4,7 +4,6 @@ import InputComponent from './InputComponent';
 import CountComponent from './CountComponent';
 
 const Header1 = (props) => {
-  // undefined | null | 0
   return (
     <h1 style={{ color: props.color, fontSize: '15px' }}>{props.title}</h1>
   );
@@ -55,11 +54,11 @@ export default function App() {
       )}
 
       <form onSubmit={handleSubmit}>
-        <input type="email" name="email" />
-        <input name="password" type="password" />
+        <input type="email" />
+        <input type={showPassword ? 'text' : 'password'} />
         <input
           type="checkbox"
-          onClick={() => showPassword(show)=>!show)}
+          onClick={() => setShowPassword((show) => !show)}
         />
         show
         <button>Login</button>
